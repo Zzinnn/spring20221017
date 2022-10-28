@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.lecture.Mapper10">
+
+	<delete id="removeCustomer">
+DELETE FROM Customers
+WHERE CustomerID = 91
+	</delete>
+	
+	<delete id="removeEmployee">
+DELETE FROM Employees
+WHERE EmployeeID = 8
+	</delete>
+	
+	<delete id="removeCustomerById">
+DELETE FROM Customers
+WHERE CustomerID = #{id}
+	</delete>
+	
+	<delete id="removeEmployeeById">
+DELETE FROM Employees
+WHERE EmployeeID = #{id}
+	</delete>
+	
+	<insert id="addCustomer">
+	INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+	VALUES('SON','HM', 'LONDON', 'LONDON', '111111', 'UK')
+	</insert>
+	
+	<insert id="addSupplier">
+	INSERT INTO Suppliers
+	(SupplierName, ContactName, Address, City, PostalCode, Country, Phone)
+	VALUES 
+	('Park', 'JISUNG', 'SEOUL', 'SEOUL', '3333333', 'KOREA', '01099999999')
+	</insert>
+	
+	<insert id="insertCustomer">
+	INSERT INTO Customers
+	(CustomerName, ContactName, Address, City, PostalCode, Country)
+	VALUES
+	(#{name}, #{contactName}, #{address}, #{city}, #{postalCode}, #{country})	
+	</insert>
+	
+<!-- 	useGeneratedKeys false가 기본값 어떤 프로포티를 받을지 id 셋팅 -->
+	<insert id="insertCustomerAndGetKey" useGeneratedKeys="true" keyProperty="id" > 
+INSERT INTO Customers
+(CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES
+(#{name}, #{contactName}, #{address}, #{city}, #{postalCode}, #{country})	
+	</insert>
+	
+	<insert id="insertSupplierAndGetKey" useGeneratedKeys="true" keyProperty="id">
+INSERT INTO Suppliers
+(SupplierName, ContactName, Address, City, PostalCode, Country, Phone)
+VALUES 
+('Park', 'JISUNG', 'SEOUL', 'SEOUL', '3333333', 'KOREA', '01099999999')
+	</insert>
+	
+	
+</mapper>
