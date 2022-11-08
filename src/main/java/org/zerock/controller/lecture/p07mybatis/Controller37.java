@@ -45,22 +45,24 @@ public class Controller37 {
 		return "redirect:/ex37/sub01";
 	}
 	
-	
+	// 공급자정보 변경 코드 작성
+	// 경로 : sub02
+	// 빈 : JavaBean19
 	@GetMapping("sub02")
-	public String mathod2() {
-		@RequestParam(int id)
+	public void getMethod2(Integer id, Model model) {
+		// id 파라미터 받고
+		// 공급자정보 조회
 		JavaBean19 supplier = mapper.getSupplierById(id);
-		
-		
-		return "/ex37/sub02";
+		// 모델에 공급자정보 넣고
+		model.addAttribute("supplier", supplier);
+		// 포워드
 	}
 	
 	@PostMapping("sub02")
-	public String postMathod2(JavaBean19 supplier, RedirectAttributes rttr ) {
-		int cnt = mapper.updateSuppliers(supplier);
+	public String postMethod2(JavaBean19 supplier, RedirectAttributes rttr) {
+		int cnt = mapper.updateSupplier(supplier);
 		
 		rttr.addAttribute("id", supplier.getId());
-		
 		return "redirect:/ex37/sub02";
 	}
 }
